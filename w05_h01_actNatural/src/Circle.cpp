@@ -12,7 +12,7 @@ void Circle::setup(float pX, float pY, float size, float _rotationZ, float inter
 
 }
 
-void Circle::update(float _posX){
+void Circle::update(){
     glm::vec2 mouse;
     mouse.x = ofGetMouseX();
     mouse.y = ofGetMouseY();
@@ -21,11 +21,11 @@ void Circle::update(float _posX){
     pos.x +=ofSignedNoise(time)*2;
     pos.y +=ofSignedNoise(time)*2;
     rotateee+=ofRandom(1,10);
+    pos += (mouse - pos) * lerp;
 }
 
 
 void Circle::draw(){
-    
     ofNoFill();
 //    ofSetCircleResolution(3);
     ofSetColor(225);

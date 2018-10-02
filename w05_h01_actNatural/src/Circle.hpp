@@ -6,7 +6,7 @@ class Circle{
     
 public:
     void setup(float pX, float pY, float size, float _rotationZ, float interp);
-    void update(float _posX);
+    void update();
     void draw();
     
     void keyPressed(int key);

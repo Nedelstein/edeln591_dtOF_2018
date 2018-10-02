@@ -83,27 +83,27 @@ void ofApp::update(){
     
     for (int i = 0; i<numCircles; i++){
 
-        circles[i].update(_posX);
+        circles[i].update();
         circles[i].pos += (mouse -circles[i].pos) * interp;
     }
     for (int i = 0; i<numCircles2; i++){
-        circles2[i].update(_posX);
+    circles2[i].update();
       circles2[i].pos += (mouse -circles2[i].pos) * interp;
     }
     for (int i = 0; i<numCircles3; i++){
-    circles3[i].update(_posX);
+    circles3[i].update();
     circles3[i].pos += (mouse -circles3[i].pos) * interp;
     }
     for (int i = 0; i<numCircles4; i ++){
-    circles4[i].update(_posX);
+    circles4[i].update();
     circles4[i].pos += (mouse -circles4[i].pos) * interp;
     }
     for (int i = 0; i<numCircles5; i ++){
-        circles5[i].update(_posX);
+        circles5[i].update();
         circles5[i].pos += (mouse -circles5[i].pos) * interp;
     }
     for (int i = 0; i<numCircles6; i ++){
-        circles6[i].update(_posX);
+        circles6[i].update();
         circles6[i].pos += (mouse -circles6[i].pos) * interp;
     }
 }
