@@ -68,9 +68,6 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-//        for(int i=0; i<1; i++){
-//            face[i].mousePressed(x,y,button);
-//        }
 
 }
 

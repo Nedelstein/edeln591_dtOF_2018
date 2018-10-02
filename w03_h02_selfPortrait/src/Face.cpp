@@ -9,8 +9,8 @@ void Face::setup(){
   
     
     
-    noseX = ofGetWidth()/2;
-    noseY = ofGetHeight()/2;
+    noseX = ofRandom(ofGetWidth()/2, ofGetWidth()/6);
+    noseY = ofRandom(ofGetHeight()/2, ofGetWidth()/6);
     leftEyeX = noseX-100;
     leftEyeY = noseY-100;
     rightEyeX = noseX +100;
@@ -23,9 +23,7 @@ void Face::setup(){
     leftEyeSpeed = 2;
     rightEyeSpeed = 2;
     
-//    noseVec.x = noseX;
-//    noseVec.y = noseY;
-//    leftEyeVec.x = leftEyeX;
+    
     
     
 
@@ -39,17 +37,8 @@ void Face::update(){
     leftEyeY +=leftEyeSpeed;
     rightEyeY+=rightEyeSpeed;
     
-    glm::vec2 destination;
-    destination.x   = ofGetMouseX();
-    destination.y   = ofGetMouseY();
-    float percent = 0.03;
-    
-    glm::vec2 diff = destination - pos;
-    
-    pos+= percent * diff;
-    
-    
-    
+
+
 
     
 }
@@ -119,6 +108,16 @@ void Face::draw(){
 }
     void Face::mouseDragged(int x, int y, int button){
         if ((button == 0) || (button == 1) || (button == 2)){
+            glm::vec2 destination;
+            destination.x   = ofGetMouseX();
+            destination.y   = ofGetMouseY();
+            float percent = 0.03;
+            
+            glm::vec2 diff = destination - pos;
+            
+            pos+= percent * diff;
+            
+            
             noseX = pos.x;
             rightEyeX = pos.x;
             leftEyeX = pos.x;
@@ -127,15 +126,10 @@ void Face::draw(){
             rightEyeY = pos.y;
             leftEyeY = pos.y;
             mouthY = pos.y;
-            
-            
-            
-            
-            
+        
+    }
+    }
 
-//            noseX+=noseSpeed;
-//            mouthX+=mouthSpeed;
-//            leftEyeX+=leftEyeSpeed;
-//            rightEyeX+=rightEyeSpeed;
-    }
-    }
+
+    
+    
