@@ -18,10 +18,10 @@ void Circle::update(){
     mouse.y = ofGetMouseY();
     
     float time = ofGetElapsedTimef();
-    pos.x +=ofSignedNoise(time)*2;
-    pos.y +=ofSignedNoise(time)*2;
+    pos.x +=ofSignedNoise(time)*7;
+    pos.y +=ofSignedNoise(time)*7;
     rotateee+=ofRandom(1,10);
-    pos += (mouse - pos) * lerp;
+//    pos += (mouse - pos) * lerp;
 }
 
 
@@ -31,7 +31,6 @@ void Circle::draw(){
     ofSetColor(225);
     ofRotateZ(rotateee);
     ofDrawCircle(pos, radius);
-    
 }
     
     
