@@ -15,6 +15,7 @@ public:
     void draw();
     glm::vec2 pos;
     
+
     vector<Particle> particles;
     
 };

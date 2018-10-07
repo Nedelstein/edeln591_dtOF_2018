@@ -28,11 +28,26 @@ void Particle::update(){
     acc *=0;
 }
 
+//void Particle::addRepulsionForce( float px, float py, float radius, float strength){
+//    posOfForce.x = px;
+//    posOfForce.y = py;
+//
+//    glm::vec2 diff = pos - posOfForce;
+//
+//    if(diff.length() < radius){
+//        float pct = 1 - (diff.length() / radius);
+//        frc.x += diff.x * pct * strength;
+//        frc.y += diff.y *pct * strength;
+//    }
+
+    
+    
+//}
+
 void Particle::draw(){
     ofPushStyle();
     ofEnableAlphaBlending();
-    fade -=3;
-    ofSetColor(ofRandom(100,255),ofRandom(100,255), ofRandom(100,255), fade);
+    ofSetColor(ofRandom(100,255),ofRandom(100,255), ofRandom(100,255));
     ofDrawCircle(pos, mass*2);
     ofDisableAlphaBlending();
     ofPopStyle();

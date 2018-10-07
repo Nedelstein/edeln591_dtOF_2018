@@ -31,8 +31,10 @@ void ParticleSystem::update(int numNewParticles, int maxParticles){
 }
     
     void ParticleSystem::draw(){
-        for(int i; i<particles.size(); i ++){
+        
+        for(int i =0; i<particles.size(); i ++){
             particles[i].draw();
         }
+
     }
     
