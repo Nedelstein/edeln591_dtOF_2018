@@ -16,25 +16,31 @@ void ParticleSystem::applyForce(glm::vec2 force){
 
 void ParticleSystem::update(int numNewParticles, int maxParticles){
     for (int i = 0; i<numNewParticles; i++){
-    glm::vec2 vel = glm::vec2(ofRandom(-5,5), ofRandom(1,4));
+    glm::vec2 vel = glm::vec2(ofRandom(-5,5), ofRandom(-4,4));
     float mass = ofRandom(.01, 7);
     Particle particle = Particle(pos,vel,mass);
     particles.push_back(particle);
+        
+
     }
     
     for (int i = 0; i<particles.size(); i++){
+        particles[i].fadeScale = systemFade;
         particles[i].update();
     }
+
     while (particles.size()>maxParticles){
         particles.erase(particles.begin());
     }
-}
+    lifespan --;
+    if (lifespan < 0){
+    systemFade -=0.03;
+    }
     
-    void ParticleSystem::draw(){
+}
+void ParticleSystem::draw(){
         
         for(int i =0; i<particles.size(); i ++){
             particles[i].draw();
         }
-
     }
-    

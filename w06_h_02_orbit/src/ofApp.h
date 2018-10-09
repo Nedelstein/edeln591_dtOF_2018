@@ -1,8 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ParticleSystem.hpp"
-#include "Firework.hpp"
+#include "Planets.hpp"
+#include "Sun.hpp"
+#include "Stars.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -23,15 +24,12 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-    vector<ParticleSystem> particleSystems;
-    glm::vec2 gravity;
-    
-    vector<Firework> firework;
-    
-    glm::vec2 pos, vel;
-    
-    float lifespan = 1000;
-    float systemFade = 1;
-  
-    
+    vector<Planets> planets;
+    Sun sun[1];
+    glm::vec2 pos;
+    float size;
+    float numPlanets;
+    Stars stars[200];
+    float numStars;
+		
 };

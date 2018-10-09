@@ -19,7 +19,7 @@ void Firework::setup(glm::vec2 _vel){
 }
 
 void Firework::update(){
-    vel = glm::vec2(ofRandom(-1,1), ofRandom(-1,-3));
+    vel = glm::vec2(ofRandom(-2,2), ofRandom(-1,-3));
     pos+=vel;
     vel+=acc;
     acc*=0;

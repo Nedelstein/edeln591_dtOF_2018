@@ -19,5 +19,6 @@ public:
     float mass;
     float fade;
     float time;
+    float fadeScale;
     
 };

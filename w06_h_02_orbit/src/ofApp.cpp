@@ -2,68 +2,69 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofSetCircleResolution(100);
     ofBackground(0);
+    ofEnableSmoothing();
+    ofEnableDepthTest();
+    ofSetVerticalSync(true);
+    ofDisableArbTex();
+    numPlanets = 10;
+    numStars = 140;
     
-//    ParticleSystem particleSystem = ParticleSystem(pos);
-    
-    for(int i=0; i<firework.size(); i++){
-        firework[i].setup(vel);
-    
-        
+    for (int m =0; m<numPlanets; m++){
+        planets.push_back(Planets());
     }
-gravity = glm::vec2(0, .15);
+    for (int a =0; a<1; a++){
+        sun[a].setup();
+    }
+    for (int i=0; i <numStars; i++){
+        stars[i].setup();
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
-    for (int i =0; i<particleSystems.size(); i++){
-        particleSystems[i].applyForce(gravity);
-        particleSystems[i].update();
     
-    if (particleSystems[i].systemFade < 0) {
-        particleSystems.erase(particleSystems.begin() + i);
+    for (int a = 0; a<1; a++){
+        for (int m = 0; m<numPlanets; m++){
+            glm::vec2 force = sun[a].getForce(planets[m]);
+            planets[m].addForce(force);
+            sun[a].update();
+        }
     }
+    for (int m = 0; m<numPlanets; m++){
+        planets[m].update();
     }
-    for (int i =0; i<firework.size(); i++){
-        firework[i].update();
+    for(int i = 0; i<numStars; i++){
+        stars[i].update();
+    }
 
-        
-    }
 }
-
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
-    for (int i = 0; i<particleSystems.size(); i++){
-        particleSystems[i].draw();
-        
-
+    for (int a = 0; a<1; a++){
+        sun[a].draw();
     }
-    for (int i = 0; i<firework.size(); i++){
-        firework[i].draw();
     
-        if(firework[i].pos.y <= 150){
-            particleSystems.push_back(ParticleSystem(glm::vec2(firework[i].pos.x, firework[i].pos.y)));
-            
-            firework.erase(firework.begin() + i);
-        }
+    for (int m=0; m<numPlanets; m++){
+        planets[m].draw();
+    }
+    for(int i=1; i<numStars; i++){
+        stars[i].draw();
     }
 
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    if(key  == 'f'){
+        ofToggleFullscreen();
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    
-    if(key == 'f'){
-        ofToggleFullscreen();
-    }
 
 }
 
@@ -84,11 +85,16 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-    
-    firework.push_back(Firework(glm::vec2(x,y)));
-    
-    
-    
+//    Planets planet;
+//    pos.x = ofGetMouseX();
+//    pos.y = ofGetMouseY();
+//    size = ofRandom(10,50);
+////    planet.setup(pos, size);
+//    planet.update();
+//    planet.draw();
+//    float size = ofRandom(20,100);
+//    planets.push_back(planet);
+
 
 }
 
