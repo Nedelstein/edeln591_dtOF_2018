@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "Particle.hpp"
-#include "Letters.hpp"
 
 class ParticleSystemTop{
 public:
@@ -15,7 +14,7 @@ public:
     void applyForce(glm::vec2 force);
     void draw();
     void applyElasticForce(float strength);
-    void letterCollide();
+    void intersects();
     
     
     glm::vec2 pos;
@@ -23,8 +22,6 @@ public:
     glm::vec2 center = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
     vector<Particle> particles;
     
-    int numParticles = 1000;
-    
-    Letters letter;
+    int numParticles = 50;
     
 };

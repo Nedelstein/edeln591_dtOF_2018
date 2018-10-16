@@ -54,46 +54,28 @@ void Particle::draw(){
 //void Particle::if
 
 
-void Particle::collide(Particle& p){
-    bool collision;
-    float d = ofDist(pos.x, pos.y, p.pos.x, p.pos.y);
-    if (d < radius + p.radius){
-        collision = true;
-    }
-    else{
-        collision = false;
-    }
-    
-    if (collision == true){
-        if (pos != p.pos){
-        vel*=-1;
-//        p.vel *=-1;
-    }
-    }
-    
-    
-    
+void Particle::collide(vector<Particle>& particles){
 //    if (ofDist(inParticle-> pos.x, inParticle->pos.y, pos.x, pos.y) <radius*2){
 //        vel*=-1;
     
-//    for(int i =0 ; i<particles.size(); i++){
-//
-//    float distance = ofDist(pos.x, pos.y,particles[i].pos.x, particles[i].pos.y);
-//        if(distance>0 && distance <5){
-//            particles[i].pos.x = ofGetWidth()/2;
-//            particles[i].pos.y =ofGetHeight()/2;
-//            glm::vec2 dir = particles[i].pos - pos;
-////            dir = dir.normalize();
-//            float length = glm::length(dir);
-//            glm::vec2 normVec = dir / length;
-//
-////            ofColor(255,0,0);
+    for(int i =0 ; i<particles.size(); i++){
     
+    float distance = ofDist(pos.x, pos.y,particles[i].pos.x, particles[i].pos.y);
+        if(distance>0 && distance <5){
+            particles[i].pos.x = ofGetWidth()/2;
+            particles[i].pos.y =ofGetHeight()/2;
+            glm::vec2 dir = particles[i].pos - pos;
+//            dir = dir.normalize();
+            float length = glm::length(dir);
+            glm::vec2 normVec = dir / length;
             
-//            applyForce(normVec*10);
-//        }
-//
-//    }
+//            ofColor(255,0,0);
+            
+            
+            applyForce(normVec*10);
+        }
+        
+    }
     
     }
 

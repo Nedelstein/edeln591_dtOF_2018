@@ -10,7 +10,6 @@ public:
     void setup();
     void update();
     void draw(string _str);
-    void collide();
     
     
 ofxCenteredTrueTypeFont letterFont;
@@ -18,5 +17,6 @@ ofxCenteredTrueTypeFont letterFont;
     string str = "";
     glm::vec2 pos;
     float mass;
+    const float G = 0.1;
     
 };

@@ -13,7 +13,7 @@ public:
     void update();
     void applyForce(glm::vec2 force);
     void applyElasticForce(float strength);
-    void collide(Particle& p);
+    void collide(vector<Particle>& particles);
     void draw();
     
     glm::vec2 pos, vel, acc;

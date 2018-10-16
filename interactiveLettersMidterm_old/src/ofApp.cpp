@@ -65,7 +65,6 @@ void ofApp::keyPressed(int key){
         _str = "N";
         for (int i=0; i<particleSystemTop.size(); i++){
             particleSystemTop[i].applyForce(attractionTop);
-            particleSystemTop[i].letterCollide();
         }
         
     }

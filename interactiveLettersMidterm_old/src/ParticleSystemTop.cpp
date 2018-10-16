@@ -21,6 +21,10 @@ void ParticleSystemTop::applyElasticForce(float strength){
     }
 }
 
+void ParticleSystemTop::intersects(){
+    
+}
+
 void ParticleSystemTop::update(){
     for (int i=0; i <numParticles; i++){
         glm::vec2 vel = glm::vec2(ofRandom(-1,1), ofRandom(-1,1));
@@ -30,13 +34,15 @@ void ParticleSystemTop::update(){
         Particle particle = Particle(pos, vel, mass);
         particles.push_back(particle);
         particles[i].update();
-        
-        for (int j=0; j< particles.size(); j++){
-            if (particles[i].pos != particles[j].pos){
-            particles[i].collide(particles[j]);
-            }
-        }
-        
+//        for (int j=0; j< numParticles; j++){
+//            if (i !=j){
+//                particles[i].collide(particles[j]);
+//            }
+//        }
+    }
+        for(int i =0 ; i <particles.size(); i++ ){
+            particles[i].collide(particles);
+            
         }
 }
 
@@ -45,15 +51,3 @@ void ParticleSystemTop::draw(){
         particles[i].draw();
     }
 }
-
-void ParticleSystemTop::letterCollide(){
-    for(int i=0; i<particles.size(); i++){
-        float distance = ofDist(particles[i].pos.x, particles[i].pos.y, letter.pos.x, letter.pos.y);
-        if (distance < 0){
-            particles[i].vel *=-1;
-        }
-        
-    }
-}
-
-

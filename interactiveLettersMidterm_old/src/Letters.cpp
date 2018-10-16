@@ -8,15 +8,12 @@ void Letters::setup() {
 
 
 
-void Letters::update(){
-}
+void Letters::update(){}
 
 
 void Letters::draw(string _str){
     str = _str;
     letterFont.drawStringAsShapes(str, pos.x, pos.y);
 }
-
-
 
 
