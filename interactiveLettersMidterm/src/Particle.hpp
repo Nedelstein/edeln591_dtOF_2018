@@ -21,5 +21,6 @@ public:
     glm::vec2 elasticForce;
     float mass;
     float radius;
+    bool bCollisionChecked;
     
 };

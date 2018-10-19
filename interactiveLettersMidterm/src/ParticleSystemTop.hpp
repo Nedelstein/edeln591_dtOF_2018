@@ -16,11 +16,13 @@ public:
     void draw();
     void applyElasticForce(float strength);
     void letterCollide();
+    void init();
     
     
     glm::vec2 pos;
     
     glm::vec2 center = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
+    
     vector<Particle> particles;
     
     int numParticles = 1000;

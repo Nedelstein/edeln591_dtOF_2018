@@ -2,93 +2,57 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    
     ofBackground(0);
-    ofSetVerticalSync(false);
-    ofSetCircleResolution(100);
-    letter.setup();
+    b2Vec2 gravity(0.0f, -10.0f);
+    b2World world(gravity);
+    groundBodyDef.position.Set(0.0f, -10.0f);
+    b2Body* groundBody = world.CreateBody(&groundBodyDef);
+    groundBox.SetAsBox(50.0f, 10.0f);
+    groundBody -> CreateFixture(&groundBox, 0.0f);
+    
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.position.Set(0.0f, 4.0f);
+    b2Body* body = world.CreateBody(&bodyDef);
+    
+    dynamicBox.SetAsBox(1.0f, 1.0f);
+    fixtureDef.shape = &dynamicBox;
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 0.3f;
+    
+    body -> CreateFixture(&fixtureDef);
+    
 
     
-    glm::vec2 posTop = glm::vec2(ofRandom(ofGetWidth()), ofRandom(0,5));
     
-    ParticleSystemTop _particleSystemTop = ParticleSystemTop(posTop);
-    particleSystemTop.push_back(_particleSystemTop);
-    
-    
-    
-
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
-    
-    for (int i=0; i<particleSystemTop.size(); i++){
-       
-        ///particle force from top to center/////
-        
-        glm::vec2 dirTop = center - particleSystemTop[i].pos;
-        float distanceTop = glm::length(dirTop);
-        if(distanceTop >0){
-            glm::vec2 normalizedDirTop = dirTop / distanceTop;
-        
-            attractionTop = normalizedDirTop;
-        }
-//
-        particleSystemTop[i].update();
 
-    }
+
 
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
-
-    letter.draw(_str);
-    for (int i=0; i<particleSystemTop.size(); i++){
-        particleSystemTop[i].draw();
-    }
-
-    
-
-
+void ofApp::draw()
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    
-    if (key == 'f'){
-        ofToggleFullscreen();
-        
-    }
-    
-    if (key == 'n'){
-        _str = "N";
-        for (int i=0; i<particleSystemTop.size(); i++){
-            particleSystemTop[i].applyForce(attractionTop);
-            letter.nDraw = true;
-        }
-        
-    }
-    if (key == 'o'){
-        _str = "O";
-    }
 
-    if (key == 'a'){
-        _str = "A";
+    if(key == 'f'){
+        ofToggleFullscreen();
     }
-    if (key == 'h'){
-        _str = "H";
-    }
+//    if(key == 'n'){
+//        nDraw = true;
+//    }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    if (key == 'n' || 'o' || 'a' || 'h'){
-        _str = "";
-        for (int i=0; i<particleSystemTop.size(); i++){
-            particleSystemTop[i].applyElasticForce(5);
-    }
-        letter.nDraw = false;
+    if (key == 'n'){
+        nDraw = false;
     }
 }
 
