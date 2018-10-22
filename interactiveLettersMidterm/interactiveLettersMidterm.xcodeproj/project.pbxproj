@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		19D1AE31E3DA31A2074C9CF1 /* Letters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 238B785DF77427830ED2399E /* Letters.cpp */; };
+		36A1F6A3474C635AAA27DABA /* ParticleSystemTop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A52EE12A1767A15A8DA9207 /* ParticleSystemTop.cpp */; };
+		C6792CBAAA54D5A713D25ADF /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9AA5FD1EDF04CD1F5FB1686 /* Particle.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
-		E43835412174088E00D0E686 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E438353F2174088E00D0E686 /* Particle.cpp */; };
-		E438354721740F5200D0E686 /* ParticleSystemTop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E438354521740F5200D0E686 /* ParticleSystemTop.cpp */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 /* End PBXBuildFile section */
@@ -47,12 +47,11 @@
 /* Begin PBXFileReference section */
 		08B4D373327B759468249F7E /* ofxCenteredTrueTypeFont.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxCenteredTrueTypeFont.h; path = ../../../addons/ofxCenteredTrueTypeFont/src/ofxCenteredTrueTypeFont.h; sourceTree = SOURCE_ROOT; };
 		13CABCEC14E3211C199BD0EA /* Letters.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Letters.hpp; path = src/Letters.hpp; sourceTree = SOURCE_ROOT; };
+		1A52EE12A1767A15A8DA9207 /* ParticleSystemTop.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ParticleSystemTop.cpp; path = src/ParticleSystemTop.cpp; sourceTree = SOURCE_ROOT; };
+		234C6D66D7920557D3FC7EF1 /* Particle.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Particle.hpp; path = src/Particle.hpp; sourceTree = SOURCE_ROOT; };
 		238B785DF77427830ED2399E /* Letters.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Letters.cpp; path = src/Letters.cpp; sourceTree = SOURCE_ROOT; };
+		6B45D3FAF20A5E34D0E064EB /* ParticleSystemTop.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ParticleSystemTop.hpp; path = src/ParticleSystemTop.hpp; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
-		E438353F2174088E00D0E686 /* Particle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
-		E43835402174088E00D0E686 /* Particle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Particle.hpp; sourceTree = "<group>"; };
-		E438354521740F5200D0E686 /* ParticleSystemTop.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleSystemTop.cpp; sourceTree = "<group>"; };
-		E438354621740F5200D0E686 /* ParticleSystemTop.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParticleSystemTop.hpp; sourceTree = "<group>"; };
 		E4B69B5B0A3A1756003C02F2 /* interactiveLettersMidtermDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = interactiveLettersMidtermDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
@@ -60,6 +59,7 @@
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E9AA5FD1EDF04CD1F5FB1686 /* Particle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Particle.cpp; path = src/Particle.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,10 +132,10 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
-				E438354521740F5200D0E686 /* ParticleSystemTop.cpp */,
-				E438354621740F5200D0E686 /* ParticleSystemTop.hpp */,
-				E438353F2174088E00D0E686 /* Particle.cpp */,
-				E43835402174088E00D0E686 /* Particle.hpp */,
+				6B45D3FAF20A5E34D0E064EB /* ParticleSystemTop.hpp */,
+				1A52EE12A1767A15A8DA9207 /* ParticleSystemTop.cpp */,
+				E9AA5FD1EDF04CD1F5FB1686 /* Particle.cpp */,
+				234C6D66D7920557D3FC7EF1 /* Particle.hpp */,
 				238B785DF77427830ED2399E /* Letters.cpp */,
 				13CABCEC14E3211C199BD0EA /* Letters.hpp */,
 			);
@@ -253,10 +253,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				E43835412174088E00D0E686 /* Particle.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				C6792CBAAA54D5A713D25ADF /* Particle.cpp in Sources */,
 				19D1AE31E3DA31A2074C9CF1 /* Letters.cpp in Sources */,
-				E438354721740F5200D0E686 /* ParticleSystemTop.cpp in Sources */,
+				36A1F6A3474C635AAA27DABA /* ParticleSystemTop.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

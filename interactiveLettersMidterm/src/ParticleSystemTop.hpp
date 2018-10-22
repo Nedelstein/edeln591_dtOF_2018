@@ -15,7 +15,10 @@ public:
     void applyForce(glm::vec2 force);
     void draw();
     void applyElasticForce(float strength);
+    void applyDampingForce(float strength);
     void letterCollide();
+    void oCollide();
+    void nCollide();
     void init();
     
     
@@ -25,8 +28,10 @@ public:
     
     vector<Particle> particles;
     
-    int numParticles = 1000;
+    int numParticles = 500;
     
     Letters letter;
+    bool oForce;
+    bool collision;
     
 };

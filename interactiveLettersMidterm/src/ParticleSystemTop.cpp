@@ -17,6 +17,11 @@ void ParticleSystemTop::applyForce(glm::vec2 force){
         particles[i].applyForce(force);
     }
 }
+void ParticleSystemTop::applyDampingForce(float strength){
+    for (int i = 0; i>particles.size(); i++){
+        particles[i].applyDampingForce(strength);
+    }
+}
 
 void ParticleSystemTop::applyElasticForce(float strength){
     for (int i=0; i<particles.size(); i++){
@@ -25,28 +30,18 @@ void ParticleSystemTop::applyElasticForce(float strength){
 }
 
 void ParticleSystemTop::update(){
-//    for (int i=0; i <numParticles; i++){
-//        glm::vec2 vel = glm::vec2(ofRandom(-1,1), ofRandom(-1,1));
-//        float mass = ofRandom(0.05, 5);
-//        pos.x = ofRandom(ofGetWidth());
-//        pos.y = ofRandom(0,5);
-//        Particle particle = Particle(pos, vel, mass);
-//        particles.push_back(particle);
-//        particles[i].update();
-//    }
 
-//    for(auto& p:particles){
-//        p.bCollisionChecked = false;
-//    }
     for (int i=0; i <particles.size(); i++){
         particles[i].update();
-
+        particles[i].checkEdges();
         
+        if (collision){
         for (int j=0; j< particles.size(); j++){
             if(i !=j){
                 if (particles[i].pos != particles[j].pos){
-            
+
                 particles[i].collide(particles[j]);
+                }
             }
             }
         }
@@ -55,8 +50,8 @@ void ParticleSystemTop::update(){
 
 void ParticleSystemTop::init(){
     for (int i=0; i <numParticles; i++){
-        glm::vec2 vel = glm::vec2(ofRandom(-1,1), ofRandom(1,3));
-        float mass = ofRandom(0.5, 5);
+        glm::vec2 vel = glm::vec2(0, 0);
+        float mass = ofRandom(0.5, 2);
         pos.x = ofRandom(ofGetWidth());
         pos.y = ofRandom(1,30);
         particles.emplace_back(pos, vel, mass);
@@ -69,6 +64,34 @@ void ParticleSystemTop::draw(){
         particles[i].draw();
     }
 }
+
+
+void ParticleSystemTop::oCollide(){
+    if (oForce){
+        for(int i=0; i<particles.size(); i++){
+            glm::vec2 diff = letter.oPos - particles[i].pos;
+            particles[i].applyForce(diff * 0.03);
+            particles[i].applyDampingForce(0.1);
+            float distance = ofDist(particles[i].pos.x, particles[i].pos.y, letter.oPos.x, letter.oPos.y);
+            if (distance < letter.oRad + particles[i].radius){
+                particles[i].vel = glm::vec2(0,0);
+            }
+        }
+    }
+}
+
+//void ParticleSystemTop::nCollide(){
+//    for(int i=0; i<particles.size(); i ++){
+//        vector<ofPolyline> outline = letter.letterN.getOutline();
+//        for (int j = 0; j < outline.size(); j++){
+//            if(outline[j].inside(particles[i])){
+//                particles[i].vel = glm::vec2(0,0);
+//
+//            }
+//        }
+//    } 
+//}
+
 
 
 //void ParticleSystemTop::letterCollide(){

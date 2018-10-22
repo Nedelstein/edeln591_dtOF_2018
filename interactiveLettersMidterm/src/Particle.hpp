@@ -12,9 +12,12 @@ public:
     void setup();
     void update();
     void applyForce(glm::vec2 force);
+    void applyDampingForce(float strength);
     void applyElasticForce(float strength);
     void collide(Particle& p);
     void draw();
+    void Ocollide();
+    void checkEdges();
     
     glm::vec2 pos, vel, acc;
     glm::vec2 origPos;

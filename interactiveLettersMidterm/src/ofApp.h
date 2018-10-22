@@ -26,11 +26,20 @@ class ofApp : public ofBaseApp{
     
     ofxCenteredTrueTypeFont letterFont;
     
+
+    Letters n;
+    Letters o;
+    Letters a;
+    Letters h;
+    
     Letters letter;
     vector<ParticleSystemTop> particleSystemTop;
     
     string _str;
     glm::vec2 center = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
     glm::vec2 attractionTop;
-		
+    bool elasticForceOn;
+    
+    map< char, Letters> noah;
+    char currentChar;
 };

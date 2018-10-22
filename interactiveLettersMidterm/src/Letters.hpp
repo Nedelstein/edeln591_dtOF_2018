@@ -1,21 +1,23 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxCenteredTrueTypeFont.h"
 #include "Particle.hpp"
 
 class Letters{
 public:
 
-    void setup();
+    void setup(char c, glm::vec2 _pos);
     void update();
-    void draw(string _str);
-    void collide();
+    void draw();
+    void Ncollide();
+    void Ocollide();
+    glm::vec2 getForce(glm::vec2 pos);
+    
+    vector<glm::vec2> attractors;
     
     
 ofTrueTypeFont letterFont;
     
-    string str = "";
     glm::vec2 pos;
     float mass;
     typedef ofPath ofTTFCharacter;
@@ -25,5 +27,10 @@ ofTrueTypeFont letterFont;
     float nStartY = ofGetHeight() *0.75;
     bool nDraw;
    vector<Particle> particles;
-    ofPolyline nLine;
+    
+    glm::vec2 oPos;
+    float oRad;
+    bool oDraw;
+    
+    
 };
