@@ -58,6 +58,14 @@ void ParticleSystemTop::init(){
 //        Particle particle = Particle(pos, vel, mass);
 //        particles.push_back(particle);
 }
+
+for (int  i = 0; i<numParticles; i++){
+    glm::vec2 vel = glm::vec2(0, 0);
+    float mass = ofRandom(0.5, 2);
+    leftPos.x = ofRandom(1, 30);
+    leftPos.y = ofRandom(ofGetHeight());
+    particles.emplace_back(leftPos, vel, mass);
+}
 }
 void ParticleSystemTop::draw(){
     for(int i=0; i<particles.size(); i++){

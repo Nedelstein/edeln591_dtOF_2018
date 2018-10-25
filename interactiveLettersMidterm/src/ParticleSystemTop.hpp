@@ -23,6 +23,8 @@ public:
     
     
     glm::vec2 pos;
+    glm::vec2 leftPos;
+
     
     glm::vec2 center = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
     

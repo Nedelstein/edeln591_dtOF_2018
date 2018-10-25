@@ -4,6 +4,7 @@
 void ofApp::setup(){
     ofBackground(0);
     ofSetVerticalSync(false);
+    ofSetBackgroundAuto(false);
     ofSetCircleResolution(100);
     
     noah['n'] = Letters();
@@ -44,7 +45,8 @@ void ofApp::update(){
     
         
         //particle force from top to center/////
-        glm::vec2 dirTop = center - particleSystemTop[i].pos;
+        for (int i=0; i<particleSystemTop.size(); i++){
+        glm::vec2 dirTop = noah[currentChar].pos - particleSystemTop[i].pos;
         float distanceTop = glm::length(dirTop);
         if(distanceTop >0){
             glm::vec2 normalizedDirTop = dirTop / distanceTop;
@@ -52,7 +54,7 @@ void ofApp::update(){
             attractionTop = normalizedDirTop;
         }
 
-
+        }
 
     }
     
@@ -60,6 +62,11 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
+    ofPushStyle();
+    ofSetColor(0, 0, 0, 10);
+    ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+    ofPopStyle();
 
     for (int i=0; i<particleSystemTop.size(); i++){
         particleSystemTop[i].draw();
@@ -86,7 +93,7 @@ void ofApp::keyPressed(int key){
         currentChar = key;
         for (int i=0; i<particleSystemTop.size(); i++){
         particleSystemTop[i].applyForce(attractionTop);
-            particleSystemTop[i].collision = false;
+        particleSystemTop[i].collision = false;
         elasticForceOn = false;
         }
     }
@@ -99,20 +106,20 @@ void ofApp::keyPressed(int key){
 //        }
     
     
-    if (key == 'o'){
-        for(int i=0; i<particleSystemTop.size(); i++){
-            particleSystemTop[i].applyForce(attractionTop);
-            letter.oDraw = true;
-            particleSystemTop[i].oForce = true;
-        }
-    }
-
-    if (key == 'a'){
-
-    }
-    if (key == 'h'){
-
-    }
+//    if (key == 'o'){
+//        for(int i=0; i<particleSystemTop.size(); i++){
+//            particleSystemTop[i].applyForce(attractionTop);
+//            letter.oDraw = true;
+//            particleSystemTop[i].oForce = true;
+//        }
+//    }
+//
+//    if (key == 'a'){
+//
+//    }
+//    if (key == 'h'){
+//
+//    }
 }
 
 //--------------------------------------------------------------
@@ -120,7 +127,8 @@ void ofApp::keyReleased(int key){
     if (key == 'n' || key == 'o' || key == 'a' || key == 'h'){
         currentChar = ' ';
         for (int i=0; i<particleSystemTop.size(); i++){
-            particleSystemTop[i].applyElasticForce(0.3);
+//            elasticForceOn = true;
+            particleSystemTop[i].applyElasticForce(1);
             particleSystemTop[i].oForce = false;
             particleSystemTop[i].collision = false;
     }
