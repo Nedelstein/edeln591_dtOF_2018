@@ -37,7 +37,7 @@ class ofApp : public ofBaseApp{
     
     string _str;
     glm::vec2 center = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
-    glm::vec2 attractionTop;
+    glm::vec2 attraction;
     bool elasticForceOn;
     
     map< char, Letters> noah;

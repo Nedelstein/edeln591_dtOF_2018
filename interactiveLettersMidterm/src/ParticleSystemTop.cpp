@@ -1,12 +1,16 @@
 #include "ParticleSystemTop.hpp"
 
-ParticleSystemTop::ParticleSystemTop(){
-    pos = glm::vec2(0,0);
-//    init();
-}
+//ParticleSystemTop::ParticleSystemTop(){
+//    pos = glm::vec2(0,0);
+////    init();
+//}
 
 ParticleSystemTop::ParticleSystemTop(glm::vec2 _pos){
     pos = _pos;
+    leftPos = _pos;
+    rightPos = _pos;
+    bottomPos = _pos;
+    
     
     init();
     
@@ -55,8 +59,6 @@ void ParticleSystemTop::init(){
         pos.x = ofRandom(ofGetWidth());
         pos.y = ofRandom(1,30);
         particles.emplace_back(pos, vel, mass);
-//        Particle particle = Particle(pos, vel, mass);
-//        particles.push_back(particle);
 }
 
 for (int  i = 0; i<numParticles; i++){
@@ -66,6 +68,21 @@ for (int  i = 0; i<numParticles; i++){
     leftPos.y = ofRandom(ofGetHeight());
     particles.emplace_back(leftPos, vel, mass);
 }
+    for (int  i = 0; i<numParticles; i++){
+        glm::vec2 vel = glm::vec2(0, 0);
+        float mass = ofRandom(0.5, 2);
+        rightPos.x = ofRandom(ofGetWidth() - 1, ofGetWidth()- 30);
+        rightPos.y = ofRandom(ofGetHeight());
+        particles.emplace_back(rightPos, vel, mass);
+    }
+    for (int  i = 0; i<numParticles; i++){
+        glm::vec2 vel = glm::vec2(0, 0);
+        float mass = ofRandom(0.5, 2);
+        bottomPos.x = ofRandom(ofGetWidth());
+        bottomPos.y = ofRandom(ofGetHeight()-1, ofGetHeight()-30);
+        particles.emplace_back(bottomPos, vel, mass);
+    }
+    
 }
 void ParticleSystemTop::draw(){
     for(int i=0; i<particles.size(); i++){
@@ -74,19 +91,19 @@ void ParticleSystemTop::draw(){
 }
 
 
-void ParticleSystemTop::oCollide(){
-    if (oForce){
-        for(int i=0; i<particles.size(); i++){
-            glm::vec2 diff = letter.oPos - particles[i].pos;
-            particles[i].applyForce(diff * 0.03);
-            particles[i].applyDampingForce(0.1);
-            float distance = ofDist(particles[i].pos.x, particles[i].pos.y, letter.oPos.x, letter.oPos.y);
-            if (distance < letter.oRad + particles[i].radius){
-                particles[i].vel = glm::vec2(0,0);
-            }
-        }
-    }
-}
+//void ParticleSystemTop::oCollide(){
+//    if (oForce){
+//        for(int i=0; i<particles.size(); i++){
+//            glm::vec2 diff = letter.oPos - particles[i].pos;
+//            particles[i].applyForce(diff * 0.03);
+//            particles[i].applyDampingForce(0.1);
+//            float distance = ofDist(particles[i].pos.x, particles[i].pos.y, letter.oPos.x, letter.oPos.y);
+//            if (distance < letter.oRad + particles[i].radius){
+//                particles[i].vel = glm::vec2(0,0);
+//            }
+//        }
+//    }
+//}
 
 //void ParticleSystemTop::nCollide(){
 //    for(int i=0; i<particles.size(); i ++){

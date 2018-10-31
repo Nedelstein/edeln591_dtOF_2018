@@ -18,8 +18,18 @@ void ofApp::setup(){
     
     
     glm::vec2 posTop = glm::vec2(ofRandom(ofGetWidth()), ofRandom(0,5));
+    glm::vec2 posLeft = glm::vec2(ofRandom(1,30), ofRandom(ofGetHeight()));
+    glm::vec2 posRight = glm::vec2(ofRandom(ofGetWidth() - 1, ofGetWidth()- 30), ofGetHeight());
+    glm::vec2 posBottom = glm::vec2(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()-1, ofGetHeight()-30));
+    
     ParticleSystemTop _particleSystemTop = ParticleSystemTop(posTop);
     particleSystemTop.push_back(_particleSystemTop);
+    
+    ParticleSystemTop _particleSystemLeft = ParticleSystemTop(posLeft);
+    particleSystemTop.push_back(_particleSystemLeft);
+    
+    ParticleSystemTop _particleSystemRight = ParticleSystemTop(posRight);
+    particleSystemTop.push_back(_particleSystemRight);
     
     elasticForceOn = true;
     
@@ -32,29 +42,29 @@ void ofApp::update(){
     
     
     for (int i=0; i<particleSystemTop.size(); i++){
-        glm::vec2 force = noah[currentChar].getForce(particleSystemTop[i].pos);
-        particleSystemTop[i].applyForce(force);
-        particleSystemTop[i].applyDampingForce(0.2);
+//        glm::vec2 force = noah[currentChar].getForce(particleSystemTop[i].pos);
+//        particleSystemTop[i].applyForce(force);
+        particleSystemTop[i].applyDampingForce(0.3);
         particleSystemTop[i].update();
         
         if (elasticForceOn){
-            particleSystemTop[i].applyElasticForce(0.3);
+            particleSystemTop[i].applyElasticForce(1);
             
             
         }
+    }
     
-        
-        //particle force from top to center/////
+    
         for (int i=0; i<particleSystemTop.size(); i++){
-        glm::vec2 dirTop = noah[currentChar].pos - particleSystemTop[i].pos;
-        float distanceTop = glm::length(dirTop);
-        if(distanceTop >0){
-            glm::vec2 normalizedDirTop = dirTop / distanceTop;
+        glm::vec2 dir = noah[currentChar].pos - particleSystemTop[i].pos;
+        float distance = glm::length(dir);
+        if(distance >0){
+            glm::vec2 normalizedDir = dir / distance;
 
-            attractionTop = normalizedDirTop;
+            attraction = normalizedDir;
         }
 
-        }
+        
 
     }
     
@@ -92,48 +102,25 @@ void ofApp::keyPressed(int key){
     if (key == 'n' || key == 'o' || key == 'a' || key == 'h'){
         currentChar = key;
         for (int i=0; i<particleSystemTop.size(); i++){
-        particleSystemTop[i].applyForce(attractionTop);
+            glm::vec2 force = noah[currentChar].getForce(particleSystemTop[i].pos);
+            particleSystemTop[i].applyForce(force);
+//        particleSystemTop[i].applyForce(attraction);
         particleSystemTop[i].collision = false;
         elasticForceOn = false;
         }
     }
     
-//    if (key == 'n'){
-//        for (int i=0; i<particleSystemTop.size(); i++){
-//
-////            letter.nDraw = true;
-//
-//        }
-    
-    
-//    if (key == 'o'){
-//        for(int i=0; i<particleSystemTop.size(); i++){
-//            particleSystemTop[i].applyForce(attractionTop);
-//            letter.oDraw = true;
-//            particleSystemTop[i].oForce = true;
-//        }
-//    }
-//
-//    if (key == 'a'){
-//
-//    }
-//    if (key == 'h'){
-//
-//    }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
     if (key == 'n' || key == 'o' || key == 'a' || key == 'h'){
         currentChar = ' ';
+//        elasticForceOn = true;
         for (int i=0; i<particleSystemTop.size(); i++){
-//            elasticForceOn = true;
             particleSystemTop[i].applyElasticForce(1);
-            particleSystemTop[i].oForce = false;
             particleSystemTop[i].collision = false;
     }
-        letter.nDraw = false;
-        letter.oDraw = false;
     }
 }
 

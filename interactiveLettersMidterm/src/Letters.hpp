@@ -7,7 +7,7 @@ class Letters{
 public:
 
     void setup(char c, glm::vec2 _pos);
-    void update();
+    void update(glm::vec2 particlePos);
     void draw();
     void Ncollide();
     void Ocollide();

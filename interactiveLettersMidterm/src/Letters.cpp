@@ -18,6 +18,7 @@ void Letters::setup(char c, glm::vec2 _pos) {
         for (int k = 0; k < outline.size(); k++){
             
             attractors.push_back(outline[k]);
+            std::cout<< "outline" << attractors.size() << endl;
             }
         }
     
@@ -29,20 +30,43 @@ void Letters::setup(char c, glm::vec2 _pos) {
     
 }
 
-glm::vec2 Letters::getForce(glm::vec2 particlePos){
-    glm::vec2 force = glm::vec2(0,0);
-    for (int i=0; i<attractors.size(); i++){
-        glm::vec2 dir = attractors[i] - particlePos;
-        float distance = glm::length(dir);
-        if (distance !=0 ){
-            glm::vec2 norm = dir/distance;
-            force = norm * 0.001;
-        }
-        else if (distance !=0 && distance < 10){
-            force*=-1;
+//glm::vec2 Letters::getForce(glm::vec2 particlePos){
+//    glm::vec2 force = glm::vec2(0,0);
+//    for (int i=0; i<attractors.size(); i++){
+//        glm::vec2 dir = attractors[i] - particlePos;
+//        float distance = glm::length(dir);
+//        if (distance !=0 ){
+//            glm::vec2 norm = dir/distance;
+//            force = norm * 0.001;
+//        }
+//        else if (distance !=0 && distance < 10){
+//            force*=-1;
+//            }
+//        }
+
+    glm::vec2 Letters::getForce(glm::vec2 particlePos){
+        glm::vec2 force = glm::vec2(0,0);
+        glm::vec2 closestPt;
+        int closest = -1;
+        float closestDist = 9999999;
+        for (unsigned int i = 0; i <attractors.size(); i++){
+            glm::vec2 dir = attractors[i] - particlePos;
+            float distance = glm::length(dir);
+            if(distance < closestDist){
+                closestDist = distance;
+                closest = i;
             }
         }
-    
+        if (closest !=-1){
+            closestPt = attractors.at(closest);
+            float dist = sqrt(closestDist);
+            force = closestPt - particlePos;
+            
+            if(dist < 300 && dist > 40){
+                force *= 0.003;
+            }
+            
+        }
     
 //   clamp the total force strength like so:
     float totalStrength = glm::length(force);
@@ -54,9 +78,26 @@ glm::vec2 Letters::getForce(glm::vec2 particlePos){
     return force;
 }
 
-void Letters::update(){
-
-}
+//void Letters::update(glm::vec2 particlePos){
+//
+//    glm::vec2 closestPt;
+//    int closest = -1;
+//    float closestDist = 9999999;
+//    for (unsigned int i = 0; i <attractors.size(); i++){
+//        glm::vec2 dir = attractors[i] - particlePos;
+//        float distance = glm::length(dir);
+//        if(distance < closestDist){
+//                closestDist = distance;
+//                closest = i;
+//            }
+//    }
+//    if (closest !=-1){
+//        closestPt = attractors.at(closest);
+//        float dist = sqrt(closestDist);
+//        force = closestPt - particlePos;
+//
+//        }
+//}
 
 
 
@@ -64,7 +105,7 @@ void Letters::update(){
 void Letters::draw(){
     
     for(int i=0; i<attractors.size(); i++){
-        ofDrawCircle(attractors[i], 2);
+        ofDrawCircle(attractors[i], 4);
     }
 }
 

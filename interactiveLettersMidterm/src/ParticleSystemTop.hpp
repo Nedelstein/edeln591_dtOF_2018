@@ -24,13 +24,15 @@ public:
     
     glm::vec2 pos;
     glm::vec2 leftPos;
+    glm::vec2 rightPos;
+    glm::vec2 bottomPos;
 
     
     glm::vec2 center = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
     
     vector<Particle> particles;
     
-    int numParticles = 500;
+    int numParticles = 200;
     
     Letters letter;
     bool oForce;
