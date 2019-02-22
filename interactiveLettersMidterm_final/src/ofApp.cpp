@@ -107,13 +107,6 @@ void ofApp::keyPressed(int key){
     bAttraction = true;
     currentChar = key;
     
-
-//////        for (int i=0; i<particles.particles.size(); i++){
-////////        particleSystemTop[i].applyForce(attraction);
-//////        particles.particles[i].collision = false;
-//////        elasticForceOn = false;
-//////        }
-    
 }
 
 //--------------------------------------------------------------
@@ -121,14 +114,6 @@ void ofApp::keyReleased(int key){
     currentChar = ' ';
     bAttraction = false;
     
-//    if (key == 'n' || key == 'o' || key == 'a' || key == 'h'){
-//        currentChar = ' ';
-//        bAttraction = false;
-////        elasticForceOn = true;
-////        for (int i=0; i<particleSystemTop.size(); i++){
-////            particleSystemTop[i].collision = false;
-////    }
-//    }
 }
 
 //--------------------------------------------------------------

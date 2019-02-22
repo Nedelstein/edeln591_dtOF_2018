@@ -154,14 +154,6 @@ void ofApp::draw(){
             backgroundDetect_new.setPaused(true);
         }
     }
-//    ofBackground(255);
-    
-//    ofPushStyle();
-//    ofBasckground(0, 0, 0);
-//    grayImage.draw(10, 320, 400, 300);
-//    ofScale(-1,-1,1);
-//    contourFinder.draw(0, 0, ofGetWidth(), ofGetHeight());
-//    ofPopStyle();
 
     ofPushMatrix();
     ofPushStyle();
@@ -172,7 +164,6 @@ void ofApp::draw(){
 //    mesh.drawFaces();
     
     
-    //attempt to fill body with black
     vector<ofMeshFace> faces = mesh.getUniqueFaces();
     for(int i=0; i<faces.size(); i++) {
         
@@ -317,10 +308,6 @@ void ofApp::updateNormals(){
         glm::vec3 e1 = verts[va] - verts[vb];
         glm::vec3 e2 = verts[vc] - verts[vb];
         glm::vec3 nml = glm::normalize(glm::cross(e2,e1));
-            
-    
-    
-        // depending on your clockwise / winding order, you might want to reverse the e2 / e1 above if your normals are flipped.
         
         // distribute face normal to 3 vertex normals:
         mesh.getNormals()[va] += nml;    // *add* face normal
