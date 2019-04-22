@@ -5,25 +5,15 @@ void ofApp::setup(){
     ofBackground(0);
     
     myfont.load("arial.ttf", 32);
-    
-    //ambient background video
-//    backgroundLoop.load("backgroundLoop.mp4");
-//    backgroundLoop.setLoopState(OF_LOOP_PALINDROME);
-//    backgroundLoop.play();
-    
-    //triggered background video
-//    backgroundDetect.load("backgroundDetect.mp4");
-//    backgroundDetect.setLoopState(OF_LOOP_NONE);
 
-    
-    backgroundLoop_new.load("backgroundLoop_new.mp4");
+    //ambient background video
+    backgroundLoop_new.load("backgroundLoop.mp4");
     backgroundLoop_new.setLoopState(OF_LOOP_PALINDROME);
     backgroundLoop_new.play();
     
-    backgroundDetect_new.load("backgroundDetect_new.mp4");
+    //triggered background video
+    backgroundDetect_new.load("backgroundDetect.mp4");
     backgroundDetect_new.setLoopState(OF_LOOP_NONE);
-    
-    
     
     //background sound
     backgroundSound.load("backgroundNoise.mp3");
@@ -31,7 +21,6 @@ void ofApp::setup(){
     backgroundSound.setLoop(true);
     
     blobDetected = false;
-
     
     kinect.setRegistration(true);
     kinect.init();
@@ -41,7 +30,6 @@ void ofApp::setup(){
     
     angle = 20;
     kinect.setCameraTiltAngle(angle);
-    
     
     grayFarThresh = 145;
     grayNearThresh = 250;
@@ -124,13 +112,10 @@ void ofApp::update(){
             mesh.addIndex((x+1)+y*width);     // 1
             mesh.addIndex((x+1)+(y+1)*width); // 11
             mesh.addIndex(x+(y+1)*width);     // 10
+            }
         }
     }
-        
-    }
-
     updateNormals();
-    
 }
 
 //--------------------------------------------------------------
@@ -187,7 +172,7 @@ void ofApp::draw(){
         }
     }
     
-    //set colors randomly
+    //set colors randomly test
 //    for (int j = 0; j < contourFinder.size(); j++){
 //        int id = contourFinder.getLabel(j);
 //        if(id ==1){
@@ -265,7 +250,6 @@ void ofApp::keyPressed(int key){
     cout<<"near thresh: " << nearThresh<<endl;
     cout<<"far thresh:" << farThresh <<endl;
     
-
 }
 
 //--------------------------------------------------------------
@@ -289,8 +273,7 @@ void ofApp::updateNormals(){
     // 1 normal per vertex
     
     // loop through the triangles
-    for( int i=0; i+2 < mesh.getIndices().size(); i+=3 )
-    {
+    for( int i=0; i+2 < mesh.getIndices().size(); i+=3 ){
         // 3 vertices per triangle
         const int va = mesh.getIndices()[i];
         const int vb = mesh.getIndices()[i+1];
@@ -335,13 +318,12 @@ void ofApp::updateNormals(){
             
         normalIndex += 2;   // increment
         
-    }
+        }
     }
 }
 //--------------------------------------------------------------
 
-glm::vec3 ofApp::getTriangleCenter(glm::vec3 a, glm::vec3 b, glm::vec3 c)
-{
+glm::vec3 ofApp::getTriangleCenter(glm::vec3 a, glm::vec3 b, glm::vec3 c){
     // center of a triangle:
     // 2/3 from point to center of opposite edge
     glm::vec3 edgePt = (b + c) * 0.5;     // middle b_c edge
